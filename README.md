@@ -1,4 +1,6 @@
 # Stass — Redactor local de imágenes y video (beta)
+<img width="1919" height="952" alt="image" src="https://github.com/user-attachments/assets/4eb8532f-42e6-4810-b8de-7b219a108c31" />
+
 
 Aplicación web para ocultar información sensible en contenido visual. El procesamiento se realiza localmente en el navegador; no se envían archivos a servidores.
 
@@ -45,7 +47,4 @@ El contenido se procesa localmente en el navegador. No se realiza carga a servid
 ## Solución de problemas
 - Si la exportación de video no inicia, se recomienda utilizar Chrome/Edge actualizados. Algunos navegadores no soportan `MediaRecorder` o el códec seleccionado.
 - Si el enlace de descarga no aparece tras la exportación, puede tratarse de un error de grabación. Revisar la consola del navegador y probar con otro formato (`VP8/VP9`) según compatibilidad.
-- Si la reproducción no arranca durante la exportación, el navegador puede bloquear la reproducción automática. Iniciar la reproducción manualmente antes de exportar.
-
-## Enlaces
-- Repositorio: https://github.com/sergio001g/stass
+- Si la reproducción no arranca durante la exportación, el navegador puede bloquear la reproducción automática. Iniciar la reproducción manualmente antes de exportar
