@@ -1,78 +1,64 @@
-# Stass – Micro gestor de tareas y hábitos (MVP)
+# Stass – Redactor de fotos privado (MVP)
 
-Stass es un producto pequeño y útil para gestionar tareas y hábitos diarios con enfoque minimalista. La idea es construir juntos un MVP rápido que te permita:
+Stass ahora será un redactor de imágenes sencillo y rápido para ocultar información sensible (caras, matrículas, datos personales) antes de compartir fotos. Todo funciona localmente en tu navegador: sin subir a la nube.
 
-- Crear tareas y marcarlas como completadas.
-- Definir hábitos (ej. beber agua, leer) y registrar su cumplimiento diario.
-- Ver estadísticas simples (tareas completadas hoy, streaks de hábitos).
-- Mantener todo offline primero, con sincronización opcional más adelante.
-
-Estado actual: documentación inicial para arrancar el proyecto.
+Estado: documentación inicial con alcance y plan del MVP.
 
 ## Objetivos del MVP
 
-- Simplicidad: interfaz limpia, 0 fricción para añadir y completar.
-- Rapidez: carga instantánea, operaciones locales.
-- Claridad: métricas básicas y útiles (streak, completadas hoy, pendientes).
+- Privacidad primero: procesamiento offline, sin envíos a servidores.
+- Rapidez: arrastrar/soltar, redactar con uno o dos clics.
+- Control: diferentes estilos de redacción y exportación al instante.
 
 ## Funcionalidades del MVP
 
-- Tareas
-  - Crear, editar, completar, borrar.
-  - Agrupar por “hoy”, “esta semana”.
-- Hábitos
-  - Crear hábito con periodicidad diaria.
-  - Marcar cumplimiento por día y calcular streak.
-- Estadísticas
-  - Contadores de tareas completadas hoy.
-  - Streak actual por hábito.
+- Importar imágenes (`JPG`, `PNG`) por arrastrar/soltar.
+- Herramientas de redacción: blur, pixelado y caja negra.
+- Formas: rectángulos y trazos libres (freehand) para zonas irregulares.
+- Capas: añadir, mover, ocultar/mostrar y borrar redacciones.
+- Exportar imagen final manteniendo resolución; opción de eliminar metadatos EXIF.
+- Atajos básicos: `Ctrl+Z` deshacer, `Del` borrar capa seleccionada.
 
 ## Pila tecnológica sugerida
 
-Opción Web (recomendada para empezar):
 - Frontend: `React` + `Vite` + `TypeScript`.
-- Estado: `Zustand` o `Redux Toolkit` (simple preferible).
-- Persistencia local: `localStorage` o `IndexedDB` (via `idb`), sin backend inicialmente.
+- Renderizado: `Canvas`/`OffscreenCanvas` para aplicar blur/pixelado.
+- Estado: `Zustand` para simplicidad.
+- Persistencia: ninguna (proyecto local y sin backend para MVP).
 - Estilos: `TailwindCSS` o CSS simple.
-
-Opción CLI (alternativa mínima):
-- Lenguaje: `Python`.
-- Persistencia: archivo `JSON` local.
-
-Podemos empezar por la opción Web y luego añadir un backend si hace falta.
 
 ## Estructura prevista (Web)
 
 - `src/`
-  - `components/` (Lista de tareas, hábitos, estadísticas)
-  - `store/` (estado global: tareas, hábitos)
-  - `utils/` (persistencia local, helpers)
-  - `pages/` (Home, Estadísticas)
+  - `components/` (Lienzo, barras de herramientas, lista de capas)
+  - `store/` (capas, selecciones, historial)
+  - `utils/` (operaciones de canvas, exportado y EXIF)
+  - `pages/` (Editor principal)
 
 ## Roadmap propuesto
 
-1. Día 1–2: Estructura del proyecto (Vite + React) y estado básico.
-2. Día 3–4: CRUD de tareas y persistencia en `localStorage`.
-3. Día 5–6: Módulo de hábitos y cálculo de streak.
-4. Día 7: Estadísticas simples y pulido visual.
-5. V2 (opcional): Sincronización en la nube y autenticación.
+1. Día 1: Proyecto base (Vite + React), lienzo e importación.
+2. Día 2: Herramientas de rectángulo con blur/pixelado/caja negra.
+3. Día 3: Capas y deshacer/rehacer; exportar imagen.
+4. Día 4: Trazos libres e interfaz pulida.
+5. V2 (opcional): detección automática de caras y placas; presets.
 
 ## Guía de inicio (cuando exista el código)
 
-1. Clonar el repo: `git clone https://github.com/sergio001g/stass.git`
-2. Instalar dependencias: `npm install`
-3. Ejecutar desarrollo: `npm run dev`
-4. Abrir en navegador: `http://localhost:5173`
+1. Clonar: `git clone https://github.com/sergio001g/stass.git`
+2. Instalar: `npm install`
+3. Ejecutar: `npm run dev`
+4. Abrir: `http://localhost:5173`
 
-## Cómo colaborar (tú y yo)
+## Cómo colaborar
 
-- Abrimos issues con tareas claras del roadmap.
-- Trabajamos por PRs pequeños y revisiones rápidas.
-- Priorizamos entregar valor del MVP antes del “nice to have”.
+- Definimos issues por cada herramienta (blur, pixelado, exportación).
+- PRs pequeños, revisiones rápidas y foco en rendimiento en canvas.
+- Validamos privacidad (sin subidas) y UX de un solo clic.
 
 ---
 
-Este README es el primer archivo del repositorio y define el producto pequeño que podemos construir juntos. A continuación haré el push inicial para que quede publicado en GitHub.
+Con esto el proyecto queda menos común y más útil en privacidad. Si te gusta, creo el esqueleto y empezamos por el lienzo y la importación de imágenes.
 
 Repositorio inicial para el proyecto `stass`.
 
