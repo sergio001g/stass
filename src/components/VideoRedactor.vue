@@ -181,9 +181,12 @@ async function exportVideo() {
   const ctx = canvas.getContext('2d')!
 
   const canvasStream = (canvas as HTMLCanvasElement).captureStream(30)
-  const sourceStream = v.captureStream()
+  const sourceStream: MediaStream = (v as any).captureStream ? (v as any).captureStream() : new MediaStream()
   const audioTracks = sourceStream.getAudioTracks()
-  const combined = new MediaStream([...audioTracks, canvasStream.getVideoTracks()[0]])
+  const videoTrack = canvasStream.getVideoTracks()[0]
+  const tracks: MediaStreamTrack[] = [...audioTracks]
+  if (videoTrack) tracks.push(videoTrack)
+  const combined = new MediaStream(tracks)
 
   function getSupportedMime(): string {
     const candidates = ['video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm']
@@ -211,11 +214,12 @@ async function exportVideo() {
     downloadUrl.value = URL.createObjectURL(blob)
     statusMsg.value = 'Exportación completa. Enlace de descarga disponible.'
   }
-  recorder.onerror = (e) => { statusMsg.value = 'Error durante la grabación.' }
+  recorder.onerror = () => { statusMsg.value = 'Error durante la grabación.' }
 
   function drawFrame() {
-    ctx.drawImage(v, 0, 0, canvas.width, canvas.height)
-    const t = v.currentTime
+    const videoEl = v as HTMLVideoElement
+    ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height)
+    const t = videoEl.currentTime
     if (rect.value && t >= start.value && t <= end.value) {
       const c = overlayRef.value!
       const rw = Math.abs(rect.value.w)
@@ -229,7 +233,7 @@ async function exportVideo() {
       ctx.fillStyle = 'black'
       ctx.fillRect(sx * canvas.width, sy * canvas.height, sw * canvas.width, sh * canvas.height)
     }
-    if (!v.paused && !v.ended) {
+    if (!videoEl.paused && !videoEl.ended) {
       requestAnimationFrame(drawFrame)
     }
   }
