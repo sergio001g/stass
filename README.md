@@ -3,6 +3,9 @@
 
 
 Aplicación web para ocultar información sensible en contenido visual. El procesamiento se realiza localmente en el navegador; no se envían archivos a servidores.
+web:https://stass-4zek.vercel.app/
+https://stass-4zek.vercel.app/
+https://stass-4zek.vercel.app/
 
 ## Características
 - Redacción de imágenes: caja negra, desenfoque y pixelado con controles de intensidad.
