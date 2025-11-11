@@ -1,64 +1,46 @@
-# Stass – Redactor de fotos privado (MVP)
+# Stass – Redactor de fotos privado
 
-Stass ahora será un redactor de imágenes sencillo y rápido para ocultar información sensible (caras, matrículas, datos personales) antes de compartir fotos. Todo funciona localmente en tu navegador: sin subir a la nube.
+¿Has querido compartir una foto pero aparece una matrícula, una cara o datos que preferirías ocultar? Stass te ayuda a redactar (tapar) esas partes rápido y en privado, sin subir nada a la nube. Funciona 100% en tu navegador.
 
-Estado: documentación inicial con alcance y plan del MVP.
+Qué hace (de forma sencilla y útil)
+- Importas una imagen arrastrándola a la app.
+- Seleccionas zonas con un rectángulo.
+- Tapas esas zonas con un estilo (por ahora: caja negra). 
+- Exportas la imagen final lista para compartir.
 
-## Objetivos del MVP
+Por qué es diferente
+- Privacidad real: el procesamiento es local. No hay servidores.
+- Enfoque práctico: menos botones, más velocidad.
+- MVP honesto: empezamos por lo básico y lo vamos mejorando.
 
-- Privacidad primero: procesamiento offline, sin envíos a servidores.
-- Rapidez: arrastrar/soltar, redactar con uno o dos clics.
-- Control: diferentes estilos de redacción y exportación al instante.
+Primeras versiones (MVP)
+- Importación por arrastrar/soltar (`PNG`, `JPG`).
+- Redacción con rectángulos (caja negra).
+- Exportar manteniendo la resolución original.
 
-## Funcionalidades del MVP
+Próximos pasos (cuando el MVP esté estable)
+- Nuevos estilos: blur y pixelado.
+- Trazos libres para zonas irregulares.
+- Capas y deshacer/rehacer.
+- Opción de eliminar metadatos EXIF.
 
-- Importar imágenes (`JPG`, `PNG`) por arrastrar/soltar.
-- Herramientas de redacción: blur, pixelado y caja negra.
-- Formas: rectángulos y trazos libres (freehand) para zonas irregulares.
-- Capas: añadir, mover, ocultar/mostrar y borrar redacciones.
-- Exportar imagen final manteniendo resolución; opción de eliminar metadatos EXIF.
-- Atajos básicos: `Ctrl+Z` deshacer, `Del` borrar capa seleccionada.
-
-## Pila tecnológica sugerida
-
+Cómo lo construiremos
 - Frontend: `React` + `Vite` + `TypeScript`.
-- Renderizado: `Canvas`/`OffscreenCanvas` para aplicar blur/pixelado.
-- Estado: `Zustand` para simplicidad.
-- Persistencia: ninguna (proyecto local y sin backend para MVP).
-- Estilos: `TailwindCSS` o CSS simple.
+- Renderizado: `Canvas` para aplicar la redacción.
+- Sin backend: todo local para empezar.
 
-## Estructura prevista (Web)
+Uso (cuando el código esté listo)
+1) `git clone https://github.com/sergio001g/stass.git`
+2) `npm install`
+3) `npm run dev`
+4) Abrir `http://localhost:5173`
 
-- `src/`
-  - `components/` (Lienzo, barras de herramientas, lista de capas)
-  - `store/` (capas, selecciones, historial)
-  - `utils/` (operaciones de canvas, exportado y EXIF)
-  - `pages/` (Editor principal)
+Contribución
+- Issues pequeños y claros.
+- PRs cortos y directos.
+- Priorizamos privacidad y simplicidad.
 
-## Roadmap propuesto
-
-1. Día 1: Proyecto base (Vite + React), lienzo e importación.
-2. Día 2: Herramientas de rectángulo con blur/pixelado/caja negra.
-3. Día 3: Capas y deshacer/rehacer; exportar imagen.
-4. Día 4: Trazos libres e interfaz pulida.
-5. V2 (opcional): detección automática de caras y placas; presets.
-
-## Guía de inicio (cuando exista el código)
-
-1. Clonar: `git clone https://github.com/sergio001g/stass.git`
-2. Instalar: `npm install`
-3. Ejecutar: `npm run dev`
-4. Abrir: `http://localhost:5173`
-
-## Cómo colaborar
-
-- Definimos issues por cada herramienta (blur, pixelado, exportación).
-- PRs pequeños, revisiones rápidas y foco en rendimiento en canvas.
-- Validamos privacidad (sin subidas) y UX de un solo clic.
-
----
-
-Con esto el proyecto queda menos común y más útil en privacidad. Si te gusta, creo el esqueleto y empezamos por el lienzo y la importación de imágenes.
+Listo: ahora comenzamos a escribir el código del MVP.
 
 Repositorio inicial para el proyecto `stass`.
 
